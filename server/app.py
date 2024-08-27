@@ -20,6 +20,13 @@ def index():
     body = {'message': 'Welcome to the pet directory!'}
     return make_response(body, 200)
 
+@app.route('/demo_json')
+def demo_json():
+    pet_dict = {"id": 1,
+                "name" : "Fido",
+                "species" : "Dog"}
+    return make_response(pet_dict, 200)
+
 @app.route('/pets/<int:id>')
 def pet_by_id(id):
     pet = Pet.query.filter(Pet.id == id).first()
